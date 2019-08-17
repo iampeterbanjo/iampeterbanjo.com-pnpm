@@ -10,19 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/iampeterbanjo/iampeterbanjo.com.git"
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint"
-    ],
-    "*.{js,jsx,json,md}": [
-      "pnpm run lint-fix && lint-errors"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "homepage": "https://iampeterbanjo.com",
   "scripts": {
     "build": "cd ./packages/css; pnpm run build",
@@ -65,5 +52,9 @@
     "node-sass": "^4.11.0",
     "prettier": "^1.16.4",
     "rimraf": "^3.0.0"
+  },
+  "dependencies": {
+    "@hapi/good-console": "^8.1.1",
+    "@hapi/good-squeeze": "^5.2.1"
   }
 }

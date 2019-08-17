@@ -1,5 +1,8 @@
 importers:
   .:
+    dependencies:
+      '@hapi/good-console': 8.1.1
+      '@hapi/good-squeeze': 5.2.1
     devDependencies:
       eslint: 5.16.0
       eslint-config-airbnb: 17.1.1_1a78ad4088866be1e4cb296eb616226d
@@ -15,6 +18,8 @@ importers:
       prettier: 1.18.2
       rimraf: 3.0.0
     specifiers:
+      '@hapi/good-console': ^8.1.1
+      '@hapi/good-squeeze': ^5.2.1
       eslint: ^5.16.0
       eslint-config-airbnb: ^17.1.0
       eslint-config-airbnb-base: ^13.1.0
