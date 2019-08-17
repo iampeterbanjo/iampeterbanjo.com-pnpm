@@ -1,0 +1,69 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "Personal portfolio",
+  "main": "index.js",
+  "engines": {
+    "node": "10.14.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iampeterbanjo/iampeterbanjo.com.git"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint"
+    ],
+    "*.{js,jsx,json,md}": [
+      "pnpm run lint-fix && lint-errors"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "homepage": "https://iampeterbanjo.com",
+  "scripts": {
+    "build": "cd ./packages/css; pnpm run build",
+    "css-test": "cd ./packages/css; pnpm run test",
+    "clean-css": "rm -f ./css/main.css",
+    "clean": "pnpm run clean-css && pnpm recursive exec -- rm -rf node_modules; rm -rf ./node_modules",
+    "deploy": "pnpm run lint && pnpm run test && git push && git push github",
+    "dry-run": "pnpm run build && pnpm run start",
+    "lint-errors": "prettier --config prettier.config.js --list-different",
+    "lint-fix": "prettier --config prettier.config.js --write ./packages/**/*.{md}",
+    "lint": "pnpm recursive run lint",
+    "start": "node ./packages/server/start.js",
+    "test": "pnpm run css-test"
+  },
+  "keywords": [
+    "personal",
+    "portfolio",
+    "hapi",
+    "gatsby",
+    "react",
+    "tachyons"
+  ],
+  "author": {
+    "email": "me@iampeterbanjo.com",
+    "name": "Peter Banjo"
+  },
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.11.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "node-sass": "^4.11.0",
+    "prettier": "^1.16.4",
+    "rimraf": "^3.0.0"
+  }
+}
