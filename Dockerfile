@@ -11,19 +11,20 @@ RUN apt-get update \
 	&& apt-get install -y direnv \
 	&& apt-get -y autoclean
 
-RUN curl -L https://unpkg.com/@pnpm/self-installer | node
-
+# RUN curl -L https://unpkg.com/@pnpm/self-installer | node
+RUN npm i -g pnpm
 USER node
+
 COPY package.json ./
 # A wildcard is used to ensure both pnpm lock and workspace files are copied
 COPY pnpm-*.yaml ./
 COPY .envrc ./
 
 RUN direnv allow
-RUN pnpm install
-
 # Bundle app source
 COPY --chown=node:node . .
 
+RUN pnpm install
+
 EXPOSE 8080
-CMD [ "pnpm", "start" ]
+# CMD [ "pnpm", "start" ]
